@@ -13,7 +13,7 @@
             ],
             "openOCDPreConfigLaunchCommands": [
                 "set DEVICE M2S010",
-                "adapter_khz 1000",
+                "adapter_khz 4000",
             ],
             // "preLaunchTask": "Build Firmware",
             "runToEntryPoint": "main",
@@ -21,13 +21,12 @@
             //     "monitor reset halt"
             // ],
             "postRestartCommands": [
-                "file ${workspaceRoot}/build/smartfusion_cmake.elf",
                 "load",
                 "monitor reset init",
                 "break main",
                 "continue"
             ],
-            "showDevDebugOutput": "none",
+            "showDevDebugOutput": "raw",
             "gdbPath": "gdb-multiarch",
             "searchDir": [
                 "${workspaceRoot}/build"
