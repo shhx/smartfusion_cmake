@@ -1,0 +1,37 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug SmartFusion2 (OpenOCD)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/smartfusion_cmake.elf",
+            "configFiles": [
+                "board/microsemi-cortex-m3.cfg",
+            ],
+            "openOCDPreConfigLaunchCommands": [
+                "set DEVICE M2S010",
+                "adapter_khz 1000",
+            ],
+            // "preLaunchTask": "Build Firmware",
+            "runToEntryPoint": "main",
+            // "openOCDLaunchCommands": [
+            //     "monitor reset halt"
+            // ],
+            "postRestartCommands": [
+                "file ${workspaceRoot}/build/smartfusion_cmake.elf",
+                "load",
+                "monitor reset init",
+                "break main",
+                "continue"
+            ],
+            "showDevDebugOutput": "none",
+            "gdbPath": "gdb-multiarch",
+            "searchDir": [
+                "${workspaceRoot}/build"
+            ],
+        }
+    ]
+}
