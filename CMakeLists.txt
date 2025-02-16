@@ -11,6 +11,8 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -T ${LINKER_SCRIPT}")
 set(CPU_FLAGS "-mcpu=cortex-m3")
 # Set compiler flags
 add_compile_options(${CPU_FLAGS} ${COMMON_FLAGS})
+SET(CMAKE_CXX_FLAGS_DEBUG "-g")
+SET(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 # Include directories
 include_directories(

@@ -2,10 +2,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug SmartFusion2 (OpenOCD)",
+            "name": "Debug SmartFusion2",
             "type": "cortex-debug",
             "request": "launch",
             "servertype": "openocd",
+            "serverpath": "${userHome}/Microchip/SoftConsole-v2021.1/openocd/bin/openocd",
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/build/smartfusion_cmake.elf",
             "configFiles": [
@@ -13,24 +14,16 @@
             ],
             "openOCDPreConfigLaunchCommands": [
                 "set DEVICE M2S010",
-                "adapter_khz 4000",
+                "adapter_khz 6000",
             ],
-            // "preLaunchTask": "Build Firmware",
+            // "preLaunchTask": "Build",
             "runToEntryPoint": "main",
-            // "openOCDLaunchCommands": [
-            //     "monitor reset halt"
-            // ],
-            "postRestartCommands": [
-                "load",
-                "monitor reset init",
-                "break main",
-                "continue"
-            ],
-            "showDevDebugOutput": "raw",
+            "showDevDebugOutput": "parsed",
             "gdbPath": "gdb-multiarch",
-            "searchDir": [
-                "${workspaceRoot}/build"
-            ],
+            // "liveWatch": {
+            //     "enabled": true,
+            //     "samplesPerSecond": 4
+            // }
         }
     ]
 }
